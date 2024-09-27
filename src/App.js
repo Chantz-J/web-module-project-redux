@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
-import Total from './components/Total';
+import Total from './components/Total'
 
-const App = () => {
+const App = (props) => {
+  console.log(props.additionalPrice)
   const state = {
     additionalPrice: 0,
     car: {
@@ -37,4 +39,14 @@ const App = () => {
   );
 };
 
-export default App;
+//Connecting this component to the redux store
+const mapStatetoProps = state => {
+  return {
+    
+    additionalFeatures: state.additionalFeatures,
+    additionalPrice: state.additionalPrice,
+  }
+}
+
+export default connect(null, {})(App);
+// export default App
